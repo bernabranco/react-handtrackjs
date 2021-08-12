@@ -1,6 +1,8 @@
 import * as handTrack from 'handtrackjs';
 import { React, useEffect, useState } from 'react'
 
+import Loading from './Loading'
+
 export default function Handtrack() {
 
     var video = document.getElementById("video");
@@ -10,7 +12,7 @@ export default function Handtrack() {
     handTrack.startVideo(video);
     
     //load tracker model
-    const loadTracker = () => {
+    const loadModel = () => {
         handTrack.load()
             .then(model => {
                 myModel = model;
@@ -20,7 +22,7 @@ export default function Handtrack() {
     }
 
     //run tracker detection
-    const runTracker = () => {
+    const runDetection = () => {
         var video = document.getElementById("video");
         var canvas = document.getElementById("canvas");
         var context = canvas.getContext('2d')
@@ -37,20 +39,33 @@ export default function Handtrack() {
     const [loading, setLoading] = useState(0);
     const render = ()=>{
 
-        if (loading === 0) loadTracker();
         var video = document.getElementById("video");
+        var loadingInfo = document.getElementById('loading');
+
+        //load the model
+        if (loading === 0) {
+            loadModel();
+        }
+
+        //remove loading information
+        if (loading === 1) {
+            loadingInfo.style.display = 'none';
+        }
+
+        //need to check if video loaded before each detection
         video.addEventListener('loadeddata', () => {
-            runTracker();
+            runDetection();
         })
 
         video.removeEventListener('loadeddata', render);
     }
 
-    const [time, setTime] = useState(0);
+    //re-render component 
+    const [fps, setFps] = useState(0);
     useEffect(() => {
         const timer = setTimeout(() => {
-            setTime(time+1);
-        }, 100);
+            setFps(fps+1);
+        }, 500);
 
         render();
 

@@ -1,15 +1,15 @@
 
 import './App.css';
-import Image from './components/Image.js'
+import Video from './components/Video.js'
 import Handtrack from './components/Handtrack.js'
+import Loading from './components/Loading.js'
 
 function App() {
   return (
     <div className="App">
-      <div id="webgl-canvas">
-      <Image/> 
+      <Video/> 
       <Handtrack/>
-      </div>
+      <Loading/>
     </div>
   );
 }
