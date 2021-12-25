@@ -1,6 +1,6 @@
 # React HandtrackJS
 
-A very simple and highly commented example of how to use HandtrackJs Library with React to analyze a realtime webcam stream.
+A very simple and highly commented example of how to use React and HandtrackJs Library to analyze a realtime webcam stream.
 
 ## Installation
 
