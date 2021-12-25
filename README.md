@@ -32,7 +32,7 @@ Open browser on "localhost:3000"
 - Hand Recognition (open or closed)
 - Realtime webcam stream
 
-## Images
+## Prints
 
 <img src = "prints/print1.png" width = "100%" height = "auto">
 <img src = "prints/print2.png" width = "100%" height = "auto">
